@@ -1,0 +1,103 @@
+@using SistemaDrones.Logica
+@using SistemaDrones.Modelos
+@using SistemaDrones.TDAs
+@{
+    ViewData["Title"] = "Ver Mensaje";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var resultado = ViewBag.Resultado as ResultadoSimulacion;
+    var sistema = ViewBag.Sistema as SistemaDronesModelo;
+}
+
+@if (resultado != null && sistema != null)
+{
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="bi bi-info-circle"></i> Resumen del Mensaje</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-md-3">
+                            <h6 class="text-muted">Nombre</h6>
+                            <h4>@resultado.NombreMensaje</h4>
+                        </div>
+                        <div class="col-md-3">
+                            <h6 class="text-muted">Sistema de Drones</h6>
+                            <h4><span class="badge bg-info text-dark">@resultado.NombreSistemaDrones</span></h4>
+                        </div>
+                        <div class="col-md-3">
+                            <h6 class="text-muted">Mensaje Recibido</h6>
+                            <h4 class="text-success">@resultado.MensajeRecibido</h4>
+                        </div>
+                        <div class="col-md-3">
+                            <h6 class="text-muted">Tiempo Óptimo</h6>
+                            <h4 class="text-warning">@resultado.TiempoOptimo segundos</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="bi bi-table"></i> Instrucciones Detalladas</h5>
+        </div>
+        <div class="card-body table-responsive">
+            <table class="table table-hover table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>Tiempo (seg)</th>
+                        @{
+                            var nodoCabeza = sistema.Contenido.ObtenerCabeza();
+                            while (nodoCabeza != null)
+                            {
+                                <th>@nodoCabeza.Dato.NombreDron</th>
+                                nodoCabeza = nodoCabeza.Siguiente;
+                            }
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int t = 0; t < resultado.Instrucciones.Tamanio; t++)
+                    {
+                        var instante = resultado.Instrucciones.Obtener(t);
+                        <tr>
+                            <td><strong>@instante.Tiempo</strong></td>
+                            @{
+                                var nodoSistema = sistema.Contenido.ObtenerCabeza();
+                                while (nodoSistema != null)
+                                {
+                                    var nombreDron = nodoSistema.Dato.NombreDron;
+                                    var accion = "Esperar";
+                                    var nodoAccion = instante.Acciones.ObtenerCabeza();
+                                    while (nodoAccion != null)
+                                    {
+                                        if (nodoAccion.Dato.NombreDron == nombreDron)
+                                        {
+                                            accion = nodoAccion.Dato.Accion;
+                                            break;
+                                        }
+                                        nodoAccion = nodoAccion.Siguiente;
+                                    }
+                                    var color = accion == "Emitir luz" ? "text-warning fw-bold" :
+                                                accion == "Subir" ? "text-success" :
+                                                accion == "Bajar" ? "text-danger" : "text-muted";
+                                    <td class="@color">@accion</td>
+                                    nodoSistema = nodoSistema.Siguiente;
+                                }
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <a href="/Home/Mensajes" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Volver a Mensajes
+        </a>
+    </div>
+}

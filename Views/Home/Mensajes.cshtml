@@ -1,0 +1,53 @@
+@using SistemaDrones.TDAs
+@using SistemaDrones.Modelos
+@{
+    ViewData["Title"] = "Mensajes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var mensajes = ViewBag.Mensajes as ListaEnlazada<Mensaje>;
+}
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0"><i class="bi bi-envelope"></i> Listado de Mensajes</h5>
+        <span class="badge bg-success">@(mensajes?.Tamanio ?? 0) mensajes</span>
+    </div>
+    <div class="card-body">
+        @if (mensajes == null || mensajes.EstaVacia)
+        {
+            <p class="text-muted text-center py-3">
+                <i class="bi bi-inbox"></i> No hay mensajes registrados. Carga un XML de entrada primero.
+            </p>
+        }
+        else
+        {
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Sistema de Drones</th>
+                        <th>Instrucciones</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < mensajes.Tamanio; i++)
+                    {
+                        var mensaje = mensajes.Obtener(i);
+                        <tr>
+                            <td>@(i + 1)</td>
+                            <td><strong>@mensaje.Nombre</strong></td>
+                            <td><span class="badge bg-info text-dark">@mensaje.NombreSistemaDrones</span></td>
+                            <td>@mensaje.Instrucciones.Tamanio letras</td>
+                            <td>
+                                <a href="/Home/VerMensaje?nombre=@mensaje.Nombre" class="btn btn-sm btn-primary">
+                                    <i class="bi bi-eye"></i> Ver
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>

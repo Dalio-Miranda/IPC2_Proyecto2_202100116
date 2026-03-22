@@ -1,0 +1,67 @@
+@using SistemaDrones.TDAs
+@using SistemaDrones.Modelos
+@{
+    ViewData["Title"] = "Drones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var drones = ViewBag.Drones as ListaEnlazada<Dron>;
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0"><i class="bi bi-robot"></i> Listado de Drones</h5>
+                <span class="badge bg-primary">@(drones?.Tamanio ?? 0) drones</span>
+            </div>
+            <div class="card-body">
+                @if (drones == null || drones.EstaVacia)
+                {
+                    <p class="text-muted text-center py-3">
+                        <i class="bi bi-inbox"></i> No hay drones registrados. Carga un XML o agrega uno manualmente.
+                    </p>
+                }
+                else
+                {
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre del Dron</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < drones.Tamanio; i++)
+                            {
+                                var dron = drones.Obtener(i);
+                                <tr>
+                                    <td>@(i + 1)</td>
+                                    <td><span class="badge-dron text-white">@dron.Nombre</span></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-plus-circle"></i> Agregar Dron</h5>
+            </div>
+            <div class="card-body">
+                <form method="post" action="/Home/AgregarDron">
+                    <div class="mb-3">
+                        <label class="form-label">Nombre del dron</label>
+                        <input type="text" name="nombre" class="form-control" placeholder="Ej: Dron05" required />
+                        <small class="text-muted">El nombre debe ser único.</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="bi bi-plus"></i> Agregar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

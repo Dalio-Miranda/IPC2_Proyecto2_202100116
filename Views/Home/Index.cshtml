@@ -1,8 +1,93 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@{
+    ViewData["Title"] = "Inicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row justify-content-center mt-4">
+    <div class="col-md-8 text-center mb-4">
+        <h1 class="display-5"><i class="bi bi-send text-primary"></i> Sistema de Drones</h1>
+        <p class="text-muted">Ministerio de Defensa de Guatemala - USAC Facultad de Ingeniería</p>
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- Cargar XML -->
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-upload text-warning"></i> Cargar XML de Entrada</h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">Carga un archivo XML con la configuración de drones, sistemas y mensajes.</p>
+                <form method="post" action="/Home/CargarXML" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <input type="file" name="archivo" accept=".xml" class="form-control" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="bi bi-upload"></i> Cargar archivo
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Generar Salida -->
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-download text-success"></i> Generar XML de Salida</h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">Genera el archivo XML con las instrucciones detalladas y el tiempo óptimo de cada mensaje.</p>
+                <a href="/Home/GenerarSalida" class="btn btn-primary w-100">
+                    <i class="bi bi-download"></i> Descargar salida.xml
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Drones -->
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-robot text-info"></i> Drones</h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">Ver y gestionar el listado de drones del sistema.</p>
+                <a href="/Home/Drones" class="btn btn-info w-100 text-white">
+                    <i class="bi bi-arrow-right"></i> Ir a Drones
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sistemas -->
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-grid text-warning"></i> Sistemas de Drones</h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">Ver gráficamente los sistemas de drones configurados.</p>
+                <a href="/Home/Sistemas" class="btn btn-warning w-100 text-dark">
+                    <i class="bi bi-arrow-right"></i> Ir a Sistemas
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mensajes -->
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-envelope text-success"></i> Mensajes</h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">Ver y simular los mensajes encriptados con el sistema de drones.</p>
+                <a href="/Home/Mensajes" class="btn btn-success w-100">
+                    <i class="bi bi-arrow-right"></i> Ir a Mensajes
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
