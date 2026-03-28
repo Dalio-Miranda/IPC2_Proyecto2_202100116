@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SistemaDrones")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9869d500f4e2d32392f64cdf4b4034fe052d50b8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ec62f3f4cb24ce517d44cc16a57b0f66f3591956")]
 [assembly: System.Reflection.AssemblyProductAttribute("SistemaDrones")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SistemaDrones")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

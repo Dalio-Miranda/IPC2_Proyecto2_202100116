@@ -1,8 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Views\\Shared"
+    "\\Logica"
   ],
-  "SelectedNode": "\\Views",
+  "SelectedNode": "\\Logica\\Simulador.cs",
   "PreviewInSolutionExplorer": false
 }

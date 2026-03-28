@@ -47,7 +47,7 @@ namespace SistemaDrones.Logica
             resultado.NombreMensaje = mensaje.Nombre;
             resultado.NombreSistemaDrones = sistema.Nombre;
 
-            // Posiciones usando TDA Mapa propio (sin Dictionary de C#)
+            // Posiciones actuales de cada dron usando TDA Mapa propio
             Mapa<string, int> posiciones = new Mapa<string, int>();
             Nodo<ContenidoDron> nodoDron = sistema.Contenido.ObtenerCabeza();
             while (nodoDron != null)
@@ -64,9 +64,16 @@ namespace SistemaDrones.Logica
                 Instruccion instruccion = mensaje.Instrucciones.Obtener(i);
                 string dronEmisor = instruccion.NombreDron;
                 int alturaObjetivo = instruccion.Altura;
+
+                // Calcular cuántos metros le faltan al emisor
                 int posEmisor = posiciones.Obtener(dronEmisor);
                 int segundosViaje = System.Math.Abs(alturaObjetivo - posEmisor);
-                Mapa<string, int> proximasPosiciones = ObtenerProximasPosiciones(mensaje, sistema, i, posiciones);
+
+                // Próximas posiciones de cada dron no emisor
+                Mapa<string, int> proximasPosiciones = ObtenerProximasPosiciones(
+                    mensaje, i, posiciones, dronEmisor);
+
+                // Total = viaje del emisor + 1 segundo para emitir luz
                 int totalSegundos = segundosViaje + 1;
 
                 for (int seg = 0; seg < totalSegundos; seg++)
@@ -82,16 +89,24 @@ namespace SistemaDrones.Logica
 
                         if (nombreDron == dronEmisor)
                         {
+                            // El emisor viaja o emite
                             if (seg < segundosViaje)
-                                accion = posiciones.Obtener(dronEmisor) < alturaObjetivo ? "Subir" : "Bajar";
+                            {
+                                int pos = posiciones.Obtener(dronEmisor);
+                                accion = pos < alturaObjetivo ? "Subir" : "Bajar";
+                            }
                             else
+                            {
                                 accion = "Emitir luz";
+                            }
                         }
                         else
                         {
+                            // Los demás se mueven en paralelo hacia su próxima posición
                             int posActual = posiciones.Obtener(nombreDron);
                             int proxPos = proximasPosiciones.ContieneClave(nombreDron)
-                                ? proximasPosiciones.Obtener(nombreDron) : posActual;
+                                ? proximasPosiciones.Obtener(nombreDron)
+                                : posActual;
 
                             if (posActual < proxPos) accion = "Subir";
                             else if (posActual > proxPos) accion = "Bajar";
@@ -104,29 +119,39 @@ namespace SistemaDrones.Logica
 
                     resultado.Instrucciones.Agregar(instante);
 
-                    // Actualizar posiciones
+                    // Actualizar posiciones después de cada segundo
                     nodo = sistema.Contenido.ObtenerCabeza();
                     while (nodo != null)
                     {
                         string nombreDron = nodo.Dato.NombreDron;
+
                         if (nombreDron == dronEmisor && seg < segundosViaje)
                         {
                             int pos = posiciones.Obtener(dronEmisor);
                             posiciones.Poner(dronEmisor, pos < alturaObjetivo ? pos + 1 : pos - 1);
                         }
-                        else if (nombreDron != dronEmisor && seg < totalSegundos - 1)
+                        else if (nombreDron != dronEmisor)
                         {
                             int posActual = posiciones.Obtener(nombreDron);
                             int proxPos = proximasPosiciones.ContieneClave(nombreDron)
-                                ? proximasPosiciones.Obtener(nombreDron) : posActual;
-                            if (posActual < proxPos) posiciones.Poner(nombreDron, posActual + 1);
-                            else if (posActual > proxPos) posiciones.Poner(nombreDron, posActual - 1);
+                                ? proximasPosiciones.Obtener(nombreDron)
+                                : posActual;
+
+                            // Solo mover si aún no llegó a su próxima posición
+                            if (posActual < proxPos)
+                                posiciones.Poner(nombreDron, posActual + 1);
+                            else if (posActual > proxPos)
+                                posiciones.Poner(nombreDron, posActual - 1);
                         }
+
                         nodo = nodo.Siguiente;
                     }
                 }
 
+                // Fijar posición final del emisor
                 posiciones.Poner(dronEmisor, alturaObjetivo);
+
+                // Decodificar letra
                 string letra = sistema.ObtenerLetra(dronEmisor, alturaObjetivo);
                 mensajeRecibido += letra ?? "?";
             }
@@ -136,11 +161,16 @@ namespace SistemaDrones.Logica
             return resultado;
         }
 
+        // Busca la próxima altura objetivo de cada dron no emisor
         private Mapa<string, int> ObtenerProximasPosiciones(
-            Mensaje mensaje, SistemaDronesModelo sistema,
-            int indiceActual, Mapa<string, int> posicionesActuales)
+            Mensaje mensaje,
+            int indiceActual,
+            Mapa<string, int> posicionesActuales,
+            string dronEmisorActual)
         {
             Mapa<string, int> proximas = new Mapa<string, int>();
+
+            // Copiar posiciones actuales
             Nodo<Par<string, int>> nodo = posicionesActuales.ObtenerPares().ObtenerCabeza();
             while (nodo != null)
             {
@@ -148,16 +178,21 @@ namespace SistemaDrones.Logica
                 nodo = nodo.Siguiente;
             }
 
-            string dronEmisorActual = mensaje.Instrucciones.Obtener(indiceActual).NombreDron;
+            // Para cada dron no emisor, buscar su siguiente instrucción futura
             for (int j = indiceActual + 1; j < mensaje.Instrucciones.Tamanio; j++)
             {
                 Instruccion sig = mensaje.Instrucciones.Obtener(j);
-                if (sig.NombreDron != dronEmisorActual &&
-                    proximas.Obtener(sig.NombreDron) == posicionesActuales.Obtener(sig.NombreDron))
+                if (sig.NombreDron != dronEmisorActual)
                 {
-                    proximas.Poner(sig.NombreDron, sig.Altura);
+                    // Solo asignar si aún tiene la posición actual (no se le asignó próxima)
+                    if (proximas.ContieneClave(sig.NombreDron) &&
+                        proximas.Obtener(sig.NombreDron) == posicionesActuales.Obtener(sig.NombreDron))
+                    {
+                        proximas.Poner(sig.NombreDron, sig.Altura);
+                    }
                 }
             }
+
             return proximas;
         }
     }
