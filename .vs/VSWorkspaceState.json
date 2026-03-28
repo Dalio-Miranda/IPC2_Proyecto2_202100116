@@ -1,8 +1,17 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Logica"
+    "\\bin",
+    "\\bin\\Debug",
+    "\\bin\\Release",
+    "\\Controllers",
+    "\\Modelos",
+    "\\Models",
+    "\\obj",
+    "\\obj\\Release",
+    "\\Views",
+    "\\Views\\Home"
   ],
-  "SelectedNode": "\\Logica\\Simulador.cs",
+  "SelectedNode": "\\Views\\Home\\GraficarSistema.cshtml",
   "PreviewInSolutionExplorer": false
 }

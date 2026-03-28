@@ -1,0 +1,15 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        <h5><i class="bi bi-diagram-3"></i> Gráfico: @ViewBag.Nombre</h5>
+    </div>
+    <div class="card-body text-center">
+       <img src="@ViewBag.ImagenUrl = "/graficos/sistema_" + nombre + ".png?t=" + System.DateTime.Now.Ticks; 
+     onerror="this.style.display='none'; document.getElementById('error').style.display='block'" />
+<div id="error" style="display:none" class="alert alert-danger">
+    No se pudo cargar la imagen. Ruta: @ViewBag.ImagenUrl
+</div>
+</div>
+<a href="/Home/Sistemas" class="btn btn-secondary mt-3">← Volver</a>

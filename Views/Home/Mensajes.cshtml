@@ -41,8 +41,11 @@
                             <td>@mensaje.Instrucciones.Tamanio letras</td>
                             <td>
                                 <a href="/Home/VerMensaje?nombre=@mensaje.Nombre" class="btn btn-sm btn-primary">
-                                    <i class="bi bi-eye"></i> Ver
-                                </a>
+    <i class="bi bi-eye"></i> Ver
+</a>
+<a href="/Home/GraficarMensaje?nombre=@mensaje.Nombre" class="btn btn-sm btn-warning text-dark">
+    <i class="bi bi-diagram-2"></i> Gráfico
+</a>
                             </td>
                         </tr>
                     }

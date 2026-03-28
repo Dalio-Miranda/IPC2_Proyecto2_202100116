@@ -1,0 +1,20 @@
+digraph Mensaje {
+  rankdir=LR;
+  node [shape=box, style=filled, fillcolor="#1f2937", fontcolor="white", fontname="Arial", color="#374151"];
+  graph [bgcolor="#111827", fontcolor="white", fontname="Arial"];
+  edge [color="#6b7280", fontcolor="#9ca3af", fontname="Arial"];
+  label="Mensaje: Mensaje1 | Recibido: IPC2 | Tiempo óptimo: 7 seg";
+  labelloc=t;
+  fontsize=14;
+  fontcolor="#60a5fa";
+  inicio [label="INICIO", fillcolor="#065f46", fontcolor="#34d399", shape=oval];
+  t1 [label="t=1\nDronX: Subir\nDronY: Subir\nDronZ: Subir\n", fillcolor="#1f2937", fontcolor="white"];
+  t2 [label="t=2\nDronX: Subir\nDronY: Subir\nDronZ: Subir\n", fillcolor="#1f2937", fontcolor="white"];
+  t3 [label="t=3\nDronX: Emitir luz\nDronY: Subir\nDronZ: Esperar\n", fillcolor="#78350f", fontcolor="#fbbf24"];
+  t4 [label="t=4\nDronX: Esperar\nDronY: Emitir luz\nDronZ: Esperar\n", fillcolor="#78350f", fontcolor="#fbbf24"];
+  t5 [label="t=5\nDronX: Esperar\nDronY: Bajar\nDronZ: Emitir luz\n", fillcolor="#78350f", fontcolor="#fbbf24"];
+  t6 [label="t=6\nDronX: Esperar\nDronY: Bajar\nDronZ: Esperar\n", fillcolor="#1f2937", fontcolor="white"];
+  t7 [label="t=7\nDronX: Esperar\nDronY: Emitir luz\nDronZ: Esperar\n", fillcolor="#78350f", fontcolor="#fbbf24"];
+  fin [label="FIN\n" + "Mensaje: IPC2", fillcolor="#1e3a5f", fontcolor="#60a5fa", shape=oval];
+  inicio -> t1 -> t2 -> t3 -> t4 -> t5 -> t6 -> t7 -> fin;
+}

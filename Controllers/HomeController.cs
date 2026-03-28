@@ -7,24 +7,19 @@ namespace SistemaDrones.Controllers
 {
     public class HomeController : Controller
     {
-        // Estado global del sistema (en memoria mientras corre la app)
         private static ListaEnlazada<Dron> listaDrones = new ListaEnlazada<Dron>();
         private static ListaEnlazada<SistemaDronesModelo> listaSistemas = new ListaEnlazada<SistemaDronesModelo>();
         private static ListaEnlazada<Mensaje> listaMensajes = new ListaEnlazada<Mensaje>();
         private static GestorXML gestorXML = new GestorXML();
         private static Simulador simulador = new Simulador();
 
-        // ─────────────────────────────────────────
         // PÁGINA PRINCIPAL
-        // ─────────────────────────────────────────
         public IActionResult Index()
         {
             return View();
         }
 
-        // ─────────────────────────────────────────
         // CARGAR XML DE ENTRADA
-        // ─────────────────────────────────────────
         [HttpPost]
         public IActionResult CargarXML(IFormFile archivo)
         {
@@ -43,12 +38,9 @@ namespace SistemaDrones.Controllers
             return RedirectToAction("Index");
         }
 
-        // ─────────────────────────────────────────
         // GENERAR XML DE SALIDA
-        // ─────────────────────────────────────────
         public IActionResult GenerarSalida()
         {
-            // Simular todos los mensajes
             ListaEnlazada<ResultadoSimulacion> resultados = new ListaEnlazada<ResultadoSimulacion>();
             for (int i = 0; i < listaMensajes.Tamanio; i++)
             {
@@ -65,12 +57,9 @@ namespace SistemaDrones.Controllers
             return File(bytes, "application/xml", "salida.xml");
         }
 
-        // ─────────────────────────────────────────
         // GESTIÓN DE DRONES
-        // ─────────────────────────────────────────
         public IActionResult Drones()
         {
-            // Ordenar alfabéticamente antes de mostrar
             listaDrones.OrdenarAlfabeticamente((a, b) =>
                 string.Compare(a.Nombre, b.Nombre, System.StringComparison.OrdinalIgnoreCase));
             ViewBag.Drones = listaDrones;
@@ -95,21 +84,16 @@ namespace SistemaDrones.Controllers
             return RedirectToAction("Drones");
         }
 
-        // ─────────────────────────────────────────
         // GESTIÓN DE SISTEMAS DE DRONES
-        // ─────────────────────────────────────────
         public IActionResult Sistemas()
         {
             ViewBag.Sistemas = listaSistemas;
             return View();
         }
 
-        // ─────────────────────────────────────────
         // GESTIÓN DE MENSAJES
-        // ─────────────────────────────────────────
         public IActionResult Mensajes()
         {
-            // Ordenar alfabéticamente por nombre
             listaMensajes.OrdenarAlfabeticamente((a, b) =>
                 string.Compare(a.Nombre, b.Nombre, System.StringComparison.OrdinalIgnoreCase));
             ViewBag.Mensajes = listaMensajes;
@@ -138,9 +122,41 @@ namespace SistemaDrones.Controllers
             return View();
         }
 
-        // ─────────────────────────────────────────
+        // GRAPHVIZ - Sistema de drones
+        public IActionResult GraficarSistema(string nombre)
+        {
+            SistemaDronesModelo sistema = listaSistemas.Buscar(s => s.Nombre == nombre);
+            if (sistema == null) return RedirectToAction("Sistemas");
+
+            string carpeta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "graficos");
+            GestorGraphviz graphviz = new GestorGraphviz();
+            graphviz.GenerarSistemaDrones(sistema, carpeta);
+
+            ViewBag.ImagenUrl = $"/graficos/sistema_{nombre}.png?t={System.DateTime.Now.Ticks}";
+            ViewBag.Nombre = nombre;
+            return View();
+        }
+
+        // GRAPHVIZ - Mensaje
+        public IActionResult GraficarMensaje(string nombre)
+        {
+            Mensaje mensaje = listaMensajes.Buscar(m => m.Nombre == nombre);
+            if (mensaje == null) return RedirectToAction("Mensajes");
+
+            SistemaDronesModelo sistema = listaSistemas.Buscar(s => s.Nombre == mensaje.NombreSistemaDrones);
+            if (sistema == null) return RedirectToAction("Mensajes");
+
+            ResultadoSimulacion resultado = simulador.Simular(mensaje, sistema);
+            string carpeta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "graficos");
+            GestorGraphviz graphviz = new GestorGraphviz();
+            graphviz.GenerarMensaje(resultado, carpeta);
+
+            ViewBag.ImagenUrl = "/graficos/mensaje_" + nombre + ".png?t=" + System.DateTime.Now.Ticks;
+            ViewBag.Nombre = nombre;
+            return View();
+        }
+
         // AYUDA
-        // ─────────────────────────────────────────
         public IActionResult Ayuda()
         {
             return View();
