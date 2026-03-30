@@ -1,17 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\bin",
     "\\bin\\Debug",
     "\\bin\\Release",
-    "\\Controllers",
-    "\\Modelos",
-    "\\Models",
-    "\\obj",
+    "\\Documentacion",
     "\\obj\\Release",
-    "\\Views",
     "\\Views\\Home"
   ],
-  "SelectedNode": "\\Views\\Home\\GraficarSistema.cshtml",
+  "SelectedNode": "\\Documentacion\\Documentacion_Proyecto2_202100116.docx",
   "PreviewInSolutionExplorer": false
 }

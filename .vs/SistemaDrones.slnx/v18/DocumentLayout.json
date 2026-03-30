@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Documentacion\\diagrama_clases_PROYECTO_2.png||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Documentacion\\diagrama_clases_PROYECTO_2.png||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\Home\\GraficarMensaje.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Views\\Home\\GraficarMensaje.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -70,24 +74,101 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-28T01:48:24.099Z",
-              "EditorCaption": ""
+              "DocumentIndex": 0,
+              "Title": "diagrama_clases_PROYECTO_2.png - PNG [1345x1109, 32 bits, PNG]",
+              "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Documentacion\\diagrama_clases_PROYECTO_2.png",
+              "RelativeDocumentMoniker": "Documentacion\\diagrama_clases_PROYECTO_2.png",
+              "ToolTip": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Documentacion\\diagrama_clases_PROYECTO_2.png - PNG [1345x1109, 32 bits, PNG]",
+              "RelativeToolTip": "Documentacion\\diagrama_clases_PROYECTO_2.png - PNG [1345x1109, 32 bits, PNG]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2026-03-28T23:18:19.499Z",
+              "EditorCaption": " - PNG [1345x1109, 32 bits, PNG]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "VerMensaje.cshtml",
+              "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\Home\\VerMensaje.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\VerMensaje.cshtml",
+              "ToolTip": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\Home\\VerMensaje.cshtml",
+              "RelativeToolTip": "Views\\Home\\VerMensaje.cshtml",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAGcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-28T01:40:22.499Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Sistemas.cshtml",
+              "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\Home\\Sistemas.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Sistemas.cshtml",
+              "ToolTip": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\Home\\Sistemas.cshtml",
+              "RelativeToolTip": "Views\\Home\\Sistemas.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-28T01:39:35.209Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GestorGraphviz.cs",
+              "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Logica\\GestorGraphviz.cs",
+              "RelativeDocumentMoniker": "Logica\\GestorGraphviz.cs",
+              "ToolTip": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Logica\\GestorGraphviz.cs",
+              "RelativeToolTip": "Logica\\GestorGraphviz.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-28T01:32:39.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GraficarSistema.cshtml",
+              "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\Home\\GraficarSistema.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\GraficarSistema.cshtml",
+              "ToolTip": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\Home\\GraficarSistema.cshtml",
+              "RelativeToolTip": "Views\\Home\\GraficarSistema.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-28T01:32:04.752Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "Views\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "Views\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-22T22:54:10.248Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GraficarMensaje.cshtml",
+              "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\Home\\GraficarMensaje.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\GraficarMensaje.cshtml",
+              "ToolTip": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\Home\\GraficarMensaje.cshtml",
+              "RelativeToolTip": "Views\\Home\\GraficarMensaje.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-28T01:32:20.686Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Mensajes.cshtml",
               "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\Home\\Mensajes.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Mensajes.cshtml",
@@ -101,71 +182,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "VerMensaje.cshtml",
-              "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\Home\\VerMensaje.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\VerMensaje.cshtml",
-              "ToolTip": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\Home\\VerMensaje.cshtml",
-              "RelativeToolTip": "Views\\Home\\VerMensaje.cshtml",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAAAGcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-28T01:40:22.499Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Sistemas.cshtml",
-              "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\Home\\Sistemas.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Sistemas.cshtml",
-              "ToolTip": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\Home\\Sistemas.cshtml",
-              "RelativeToolTip": "Views\\Home\\Sistemas.cshtml",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACIAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-28T01:39:35.209Z",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-28T01:48:24.099Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "GestorGraphviz.cs",
-              "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Logica\\GestorGraphviz.cs",
-              "RelativeDocumentMoniker": "Logica\\GestorGraphviz.cs",
-              "ToolTip": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Logica\\GestorGraphviz.cs",
-              "RelativeToolTip": "Logica\\GestorGraphviz.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-28T01:32:39.05Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GraficarSistema.cshtml",
-              "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\Home\\GraficarSistema.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\GraficarSistema.cshtml",
-              "ToolTip": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\Home\\GraficarSistema.cshtml",
-              "RelativeToolTip": "Views\\Home\\GraficarSistema.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-28T01:32:04.752Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "_ViewStart.cshtml",
-              "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\_ViewStart.cshtml",
-              "RelativeDocumentMoniker": "Views\\_ViewStart.cshtml",
-              "ToolTip": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\_ViewStart.cshtml",
-              "RelativeToolTip": "Views\\_ViewStart.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-22T22:54:10.248Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
@@ -178,20 +207,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GraficarMensaje.cshtml",
-              "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\Home\\GraficarMensaje.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\GraficarMensaje.cshtml",
-              "ToolTip": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\Home\\GraficarMensaje.cshtml",
-              "RelativeToolTip": "Views\\Home\\GraficarMensaje.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-28T01:32:20.686Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Ayuda.cshtml",
               "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\Home\\Ayuda.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Ayuda.cshtml",
@@ -204,7 +220,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Simulador.cs",
               "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Logica\\Simulador.cs",
               "RelativeDocumentMoniker": "Logica\\Simulador.cs",
@@ -217,7 +233,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "_ViewImports.cshtml",
               "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "Views\\_ViewImports.cshtml",
@@ -230,7 +246,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "_ValidationScriptsPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
@@ -243,7 +259,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "_Layout.cshtml.css",
               "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\Shared\\_Layout.cshtml.css",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml.css",
@@ -251,11 +267,12 @@
               "RelativeToolTip": "Views\\Shared\\_Layout.cshtml.css",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-03-22T22:54:05.089Z"
+              "WhenOpened": "2026-03-22T22:54:05.089Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\DAMG USAC\\source\\repos\\SistemaDrones\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
@@ -263,7 +280,8 @@
               "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAFEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-22T22:43:56.677Z"
+              "WhenOpened": "2026-03-22T22:43:56.677Z",
+              "EditorCaption": ""
             }
           ]
         }
