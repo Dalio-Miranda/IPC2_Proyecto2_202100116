@@ -1,12 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\bin\\Debug",
-    "\\bin\\Release",
-    "\\Documentacion",
-    "\\obj\\Release",
-    "\\Views\\Home"
+    "\\Controllers",
+    "\\Logica",
+    "\\Modelos",
+    "\\Models",
+    "\\TDAs",
+    "\\Views",
+    "\\Views\\Home",
+    "\\Views\\Shared",
+    "\\wwwroot\\css"
   ],
-  "SelectedNode": "\\Documentacion\\Documentacion_Proyecto2_202100116.docx",
+  "SelectedNode": "\\Controllers\\HomeController.cs",
   "PreviewInSolutionExplorer": false
 }

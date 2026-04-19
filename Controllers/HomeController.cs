@@ -13,13 +13,8 @@ namespace SistemaDrones.Controllers
         private static GestorXML gestorXML = new GestorXML();
         private static Simulador simulador = new Simulador();
 
-        // PÁGINA PRINCIPAL
-        public IActionResult Index()
-        {
-            return View();
-        }
+        public IActionResult Index() => View();
 
-        // CARGAR XML DE ENTRADA
         [HttpPost]
         public IActionResult CargarXML(IFormFile archivo)
         {
@@ -28,17 +23,14 @@ namespace SistemaDrones.Controllers
                 TempData["Error"] = "Por favor selecciona un archivo XML válido.";
                 return RedirectToAction("Index");
             }
-
             string rutaTemporal = Path.Combine(Path.GetTempPath(), archivo.FileName);
             using (var stream = new FileStream(rutaTemporal, FileMode.Create))
                 archivo.CopyTo(stream);
-
             gestorXML.CargarXML(rutaTemporal, listaDrones, listaSistemas, listaMensajes);
             TempData["Exito"] = "Archivo XML cargado correctamente.";
             return RedirectToAction("Index");
         }
 
-        // GENERAR XML DE SALIDA
         public IActionResult GenerarSalida()
         {
             ListaEnlazada<ResultadoSimulacion> resultados = new ListaEnlazada<ResultadoSimulacion>();
@@ -49,15 +41,12 @@ namespace SistemaDrones.Controllers
                 if (sistema != null)
                     resultados.Agregar(simulador.Simular(msg, sistema));
             }
-
             string rutaSalida = Path.Combine(Path.GetTempPath(), "salida.xml");
             gestorXML.GenerarSalida(rutaSalida, resultados);
-
             byte[] bytes = System.IO.File.ReadAllBytes(rutaSalida);
             return File(bytes, "application/xml", "salida.xml");
         }
 
-        // GESTIÓN DE DRONES
         public IActionResult Drones()
         {
             listaDrones.OrdenarAlfabeticamente((a, b) =>
@@ -84,14 +73,12 @@ namespace SistemaDrones.Controllers
             return RedirectToAction("Drones");
         }
 
-        // GESTIÓN DE SISTEMAS DE DRONES
         public IActionResult Sistemas()
         {
             ViewBag.Sistemas = listaSistemas;
             return View();
         }
 
-        // GESTIÓN DE MENSAJES
         public IActionResult Mensajes()
         {
             listaMensajes.OrdenarAlfabeticamente((a, b) =>
@@ -103,63 +90,58 @@ namespace SistemaDrones.Controllers
         public IActionResult VerMensaje(string nombre)
         {
             Mensaje mensaje = listaMensajes.Buscar(m => m.Nombre == nombre);
-            if (mensaje == null)
-            {
-                TempData["Error"] = "Mensaje no encontrado.";
-                return RedirectToAction("Mensajes");
-            }
-
+            if (mensaje == null) { TempData["Error"] = "Mensaje no encontrado."; return RedirectToAction("Mensajes"); }
             SistemaDronesModelo sistema = listaSistemas.Buscar(s => s.Nombre == mensaje.NombreSistemaDrones);
-            if (sistema == null)
-            {
-                TempData["Error"] = "Sistema de drones no encontrado.";
-                return RedirectToAction("Mensajes");
-            }
-
+            if (sistema == null) { TempData["Error"] = "Sistema no encontrado."; return RedirectToAction("Mensajes"); }
             ResultadoSimulacion resultado = simulador.Simular(mensaje, sistema);
             ViewBag.Resultado = resultado;
             ViewBag.Sistema = sistema;
+            ViewBag.EsInverso = false;
             return View();
         }
 
-        // GRAPHVIZ - Sistema de drones
+        // MODO INVERSO
+        public IActionResult VerMensajeInverso(string nombre)
+        {
+            Mensaje mensaje = listaMensajes.Buscar(m => m.Nombre == nombre);
+            if (mensaje == null) { TempData["Error"] = "Mensaje no encontrado."; return RedirectToAction("Mensajes"); }
+            SistemaDronesModelo sistema = listaSistemas.Buscar(s => s.Nombre == mensaje.NombreSistemaDrones);
+            if (sistema == null) { TempData["Error"] = "Sistema no encontrado."; return RedirectToAction("Mensajes"); }
+            Mensaje mensajeInverso = simulador.InvertirMensaje(mensaje);
+            ResultadoSimulacion resultado = simulador.Simular(mensajeInverso, sistema);
+            ViewBag.Resultado = resultado;
+            ViewBag.Sistema = sistema;
+            ViewBag.EsInverso = true;
+            return View("VerMensaje");
+        }
+
         public IActionResult GraficarSistema(string nombre)
         {
             SistemaDronesModelo sistema = listaSistemas.Buscar(s => s.Nombre == nombre);
             if (sistema == null) return RedirectToAction("Sistemas");
-
             string carpeta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "graficos");
             GestorGraphviz graphviz = new GestorGraphviz();
             graphviz.GenerarSistemaDrones(sistema, carpeta);
-
-            ViewBag.ImagenUrl = $"/graficos/sistema_{nombre}.png?t={System.DateTime.Now.Ticks}";
+            ViewBag.ImagenUrl = "/graficos/sistema_" + nombre + ".png?t=" + System.DateTime.Now.Ticks;
             ViewBag.Nombre = nombre;
             return View();
         }
 
-        // GRAPHVIZ - Mensaje
         public IActionResult GraficarMensaje(string nombre)
         {
             Mensaje mensaje = listaMensajes.Buscar(m => m.Nombre == nombre);
             if (mensaje == null) return RedirectToAction("Mensajes");
-
             SistemaDronesModelo sistema = listaSistemas.Buscar(s => s.Nombre == mensaje.NombreSistemaDrones);
             if (sistema == null) return RedirectToAction("Mensajes");
-
             ResultadoSimulacion resultado = simulador.Simular(mensaje, sistema);
             string carpeta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "graficos");
             GestorGraphviz graphviz = new GestorGraphviz();
             graphviz.GenerarMensaje(resultado, carpeta);
-
             ViewBag.ImagenUrl = "/graficos/mensaje_" + nombre + ".png?t=" + System.DateTime.Now.Ticks;
             ViewBag.Nombre = nombre;
             return View();
         }
 
-        // AYUDA
-        public IActionResult Ayuda()
-        {
-            return View();
-        }
+      
     }
 }

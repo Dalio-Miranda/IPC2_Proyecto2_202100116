@@ -1,0 +1,24 @@
+digraph Mensaje {
+  rankdir=LR;
+  node [shape=box, style=filled, fillcolor="#1f2937", fontcolor="white", fontname="Arial", color="#374151"];
+  graph [bgcolor="#111827", fontcolor="white", fontname="Arial"];
+  edge [color="#6b7280", fontcolor="#9ca3af", fontname="Arial"];
+  label="Mensaje: MensajeAnima | Recibido: ANIMA | Tiempo óptimo: 11 seg";
+  labelloc=t;
+  fontsize=14;
+  fontcolor="#60a5fa";
+  inicio [label="INICIO", fillcolor="#065f46", fontcolor="#34d399", shape=oval];
+  t1 [label="t=1\nAlpha: Subir\nBeta: Subir\nGamma: Subir\n", fillcolor="#1f2937", fontcolor="white"];
+  t2 [label="t=2\nAlpha: Subir\nBeta: Subir\nGamma: Subir\n", fillcolor="#1f2937", fontcolor="white"];
+  t3 [label="t=3\nAlpha: Subir\nBeta: Subir\nGamma: Subir\n", fillcolor="#1f2937", fontcolor="white"];
+  t4 [label="t=4\nAlpha: Subir\nBeta: Subir\nGamma: Subir\n", fillcolor="#1f2937", fontcolor="white"];
+  t5 [label="t=5\nAlpha: Emitir luz\nBeta: Esperar\nGamma: Esperar\n", fillcolor="#78350f", fontcolor="#fbbf24"];
+  t6 [label="t=6\nAlpha: Bajar\nBeta: Emitir luz\nGamma: Bajar\n", fillcolor="#78350f", fontcolor="#fbbf24"];
+  t7 [label="t=7\nAlpha: Esperar\nBeta: Esperar\nGamma: Subir\n", fillcolor="#1f2937", fontcolor="white"];
+  t8 [label="t=8\nAlpha: Esperar\nBeta: Esperar\nGamma: Emitir luz\n", fillcolor="#78350f", fontcolor="#fbbf24"];
+  t9 [label="t=9\nAlpha: Emitir luz\nBeta: Esperar\nGamma: Bajar\n", fillcolor="#78350f", fontcolor="#fbbf24"];
+  t10 [label="t=10\nAlpha: Esperar\nBeta: Esperar\nGamma: Bajar\n", fillcolor="#1f2937", fontcolor="white"];
+  t11 [label="t=11\nAlpha: Esperar\nBeta: Esperar\nGamma: Emitir luz\n", fillcolor="#78350f", fontcolor="#fbbf24"];
+  fin [label="FIN\n" + "Mensaje: ANIMA", fillcolor="#1e3a5f", fontcolor="#60a5fa", shape=oval];
+  inicio -> t1 -> t2 -> t3 -> t4 -> t5 -> t6 -> t7 -> t8 -> t9 -> t10 -> t11 -> fin;
+}
